@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="overflow-x-hidden">
+  <div class="container  m-8" >
+    <h1 class="text-2xl font-bold mb-4">Team</h1>
+    <form id="repeater-form">
+      <div id="repeater-container">
+        <div class="flex flex-col md:flex-row md:items-center mb-4 repeater-row">
+          <label for="first_name" class="mr-2">First Name:</label>
+          <input type="text" id="first_name"  placeholder="jhon" class="border py-2 px-3 my-5 text-slate-500 md:mr-2 outline-none placeholder-gray-400 ">
+          <label for="last_name" class="mr-2">Last Name:</label>
+          <input type="text" id="last_name" placeholder="doe" class="border py-2 px-3 my-5 text-slate-500 md:mr-2 outline-none placeholder-gray-400 ">
+          <button type="button" class="bg-white hover:bg-gray-100  border border-gray-400 text-slate-500 px-4 py-2 rounded-full remove-button">Remove Name</button>
+        </div>
+      </div>
+      <div class="flex items-center mb-4">
+        <button type="button" id="add-button" class="bg-white hover:bg-gray-100  border border-gray-400 text-slate-500 px-4 py-2 rounded-full">Add Name</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    //  click event part for adding new name
+    
+    document.getElementById("add-button").addEventListener("click", function () {
+      const repeaterContainer = document.getElementById("repeater-container");
+      const row = document.createElement("div");
+      row.classList.add("flex", "flex-col", "md:flex-row", "md:items-center", "mb-4", "repeater-row");
+
+      const firstNameLabel = document.createElement("label");
+      firstNameLabel.setAttribute("for", "first_name");
+      firstNameLabel.classList.add("mr-2");
+      firstNameLabel.textContent = "First Name";
+
+      const firstNameInput = document.createElement("input");
+      firstNameInput.setAttribute("type", "text");
+      firstNameInput.setAttribute("id", "first_name:");
+      firstNameInput.classList.add("border" ,"py-2", "px-3" ,"my-5", "text-slate-500" ,"md:mr-2" ,"outline-none");
+
+      const lastNameLabel = document.createElement("label");
+      lastNameLabel.setAttribute("for", "last_name");
+      lastNameLabel.classList.add("mr-2");
+      lastNameLabel.textContent = "Last Name:";
+
+      const lastNameInput = document.createElement("input");
+      lastNameInput.setAttribute("type", "text");
+      lastNameInput.setAttribute("id", "last_name");
+      lastNameInput.classList.add("border" ,"py-2", "px-3" ,"my-5", "text-slate-500" ,"md:mr-2" ,"outline-none");
+
+      const removeButton = document.createElement("button");
+      removeButton.setAttribute("type", "button");
+      removeButton.classList.add("bg-white","hover:bg-gray-100", "border", "border-gray-400","text-slate-500", "px-4", "py-2", "rounded-full", "remove-button");
+      removeButton.textContent = "Remove Name";
+      removeButton.addEventListener("click", function () {
+        repeaterContainer.removeChild(row);
+      });
+
+      row.appendChild(firstNameLabel);
+      row.appendChild(firstNameInput);
+      row.appendChild(lastNameLabel);
+      row.appendChild(lastNameInput);
+      row.appendChild(removeButton);
+      repeaterContainer.appendChild(row);
+
+      
+    });
+  </script>
+</body>
+</html>
